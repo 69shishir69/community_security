@@ -51,6 +51,10 @@ while True:
 			encoding)
 		name = "Unknown" #if face is not recognized, then print Unknown
 
+		if(name!="unknown"):
+			print(name)
+		if(name=="unknown"):
+			print(name)
 		# check to see if we have found a match
 		if True in matches:
 			# find the indexes of all matched faces then initialize a
@@ -75,9 +79,20 @@ while True:
 				currentname = name
 				print(currentname)
 
+
 		# update the list of names
 		names.append(name)
+		# if(name != "unknown"):
+		# 	servo.angle = 90
+		# 	sleep(15)
+		# 	servo.angle = 0
+		# 	sleep(1)
+		# else:
+		# 	servo.angle = 0
+		# 	sleep(1)
+	
 
+	
 	# loop over the recognized faces
 	for ((top, right, bottom, left), name) in zip(boxes, names):
 		# draw the predicted face name on the image - color is in BGR
@@ -86,6 +101,7 @@ while True:
 		y = top - 15 if top - 15 > 15 else top + 15
 		cv2.putText(frame, name, (left, y), cv2.FONT_HERSHEY_SIMPLEX,
 			.8, (0, 255, 255), 2)
+		
 
 	# display the image to our screen
 	cv2.imshow("Facial Recognition is Running", frame)
